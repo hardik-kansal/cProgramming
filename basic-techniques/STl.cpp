@@ -11,7 +11,7 @@ void printVec(vector<int> &v){
 void isbalanced(string &s){
     unordered_map<char,int> u_map={{'[',1},{'{',2},{'(',3},{')',-3},{'}',-2},{']',-1}};
     stack<char> b;
-    // why stack here -- bz we want first in bracket to be checked and first out.
+    // why stack here -- bz we want last in bracket to be checked and first out.
     for(auto &ch:s){
         if(u_map[ch]>0){
             b.push(ch);
@@ -32,6 +32,18 @@ void isbalanced(string &s){
     }
     if(b.empty()){cout<<"YES"<<endl;return;}
     cout<<"NO"<<endl;
+}
+
+
+bool cmp(pair<int,int> &p1,pair<int,int> &p2){
+    if(p1.first==p2.first){
+        return p1.second>p2.second;
+        // return whatever output you want.  
+    }
+    else{
+        return p1.first<p2.first;
+    }
+    
 }
 
 
@@ -141,4 +153,18 @@ if(ita!=ms.end()){
 ms.erase("abc"); // searches for every address of "abc" internally
 string b="({[]})";
 isbalanced(b);
+
+
+//  ############## SORTING     ################### 
+
+vector<pair<int,int>> vx={{1,2},{1,1},{2,2}};   
+
+// second arg is addresss just after the last element to be sorted.  
+sort(vx.begin(),vx.end(),cmp); // o(logn)
+// Internally it uses IntroSort, which is a combination of QuickSort, HeapSort and InsertionSort
+
+for(auto &value:vx){
+    cout<<value.first<<" "<<value.second<<endl;
+}
+
 }
