@@ -62,6 +62,9 @@ int main(){
 // cout<<ps2d[c][d]-ps2d[a-1][d]-ps2d[c][b-1]+ps2d[a-1][b-1];
 // }
 
+
+//   ### BCD of array from 0 to l and r to end; ####
+
 // int t=0,n=0;
 // cin>>t;
 // cin>>n;
@@ -78,9 +81,10 @@ int main(){
 //     // l& r are index based.
 //     int l,r;
 //     cin>>l>>r;
-//     cout<<__gcd(fwd[l-1],bwd[r+1]);
-
+//     cout<<__gcd(fwd[l],bwd[r+1]);
 // }
+
+
 
 // int m=0;
 // cin>>m;

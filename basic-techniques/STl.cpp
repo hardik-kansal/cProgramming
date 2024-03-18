@@ -66,7 +66,7 @@ for(it=v2.begin();it!=v2.end();++it){
     cout<<it->first<<" "<<it->second<<endl;
 }
 // it++ moves to next part in container.
-// it+=1 moves to immediate next memory loc.
+// it+=1 moves to immediate next memory loc which is same as container next part in case of  vectors.
 
 
 for(auto &value:v2){
@@ -78,7 +78,7 @@ auto it1=v.begin();
 
 // ###########################  MAPS #####################
 
-// FOR MAPS- geeting and inserting costs O(logn)
+// FOR MAPS- geting and inserting costs O(logn)
 // at each step, internally for map<string,string>, strings are compared;KEYS ARE COMPARED.
 // => if size of string input >1e5 --costs O(slogn) as strings are internally stored as character arrays.
 
@@ -91,7 +91,7 @@ for(auto &value:a){
     cout<<value.first<<" "<<value.second<<endl;
 }
 auto it2=a.find(1);
-// if 1 does not exist return a.end()
+// if 1 does not exist returns a.end()
 if(it2!=a.end()){
     a.erase(it2);
     // a.erase(1);
@@ -134,7 +134,7 @@ set1.erase(itx);
 // ################## MUTLISETS ###############
 
 multiset<string> ms;
-// stores in sorted order +.O(logn)
+// stores in sorted order + O(logn)
 // allows duplicates
 
 ms.insert("abc");
@@ -155,12 +155,12 @@ string b="({[]})";
 isbalanced(b);
 
 
-//  ############## SORTING     ################### 
+//  #################    SORTING     ################### 
 
 vector<pair<int,int>> vx={{1,2},{1,1},{2,2}};   
 
 // second arg is addresss just after the last element to be sorted.  
-sort(vx.begin(),vx.end(),cmp); // o(logn)
+sort(vx.begin(),vx.end(),cmp); // O(logn)
 // Internally it uses IntroSort, which is a combination of QuickSort, HeapSort and InsertionSort
 
 for(auto &value:vx){

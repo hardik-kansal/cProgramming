@@ -22,7 +22,7 @@ vector<int> nge(vector<int> &v){
     }
 
 
-
+// NEXT greater element means the first number greater than indexed number in right of it.
 
 int main(){
     int t;
