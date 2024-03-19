@@ -7,7 +7,6 @@ void printBinary(int num){
     }
     cout<<endl;
 }
-
 int main(){
     // 1<<n = pow(2,n)
     cout<<(1<<4)<<endl;
@@ -71,6 +70,25 @@ int main(){
     // To unset till ith index
 
     printBinary(a&~((1<<(i+1))-1));
+
+    // To unset from msb till ith index from lsb
+
+    printBinary(a& (1<<i+1)-1);
+
+
+    // ############ XOR ##################
+
+    // a^0=a  a^a=0 and a^b^c =c^a^b
+
+    int k=4,b=6;
+    k=k^b;
+    b=b^k;
+    k=k^b;
+    cout<<k<<' '<<b<<endl;
+    
+    // Arry given - find elemnt with odd count in o(1) space
+    // As hashing uses 0(n)-> do XOR of elements.
+
 
 
 
