@@ -5,6 +5,7 @@ int main(){
     int t;
     cin>>t;
     while(t--){
+int n;int a[n];for(auto &value:a){cin>>value;}
 
 
 
