@@ -16,9 +16,9 @@ int main(){
             st2.insert({x2+dx[j]*b, y2+dy[j]*a});
         }
         int ans = 0;
-        for(auto x : st1)
+        for(auto &x : st1)
             if(st2.find(x) != st2.end())
                 ans++;
-        cout << ans << '\n';
+        cout << ans <<endl;
     }
 } 
