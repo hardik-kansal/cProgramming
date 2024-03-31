@@ -23,3 +23,4 @@ int main() {
 	cin.tie(nullptr);
 	int tt; cin >> tt; for (int i = 1; i <= tt; i++) {solve();}
 }
+// CVC CV -> if read backward -> V is differntiating factor.
