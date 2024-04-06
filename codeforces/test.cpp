@@ -6,7 +6,6 @@ using namespace std;
 #define endL cout << endl
 #define MOD 998244353 // >1e8
 #define INF 1e18
-#define N 100005 //1e5+5
 #define prDouble(x, y) cout << fixed << setprecision(y) << x
 #define bitcount(x) __builtin_popcount(x)
 #define ll long long
@@ -40,23 +39,49 @@ typedef map<ll,ll> mll;
 typedef map<string,ll> msl;
 typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
+#define N 100005 //1e5+5
+
 void printBinary(int num){
     for(int i=10;i>=0;i--){
         cout<<((num>>i)&1);
     }
     cout<<endl;
 }
-vector<ll> prime_factors(ll a){
-    vector<ll> v;
-    for(ll i=2;i*i<=a;i++){
-        while(a%i==0){
-            v.push_back(i);
-            a=a/i;
+/* vll get_h_prime(){
+vb a(N+1,false);
+vector<ll> l(N,0),h(N,0);
+a[0]=a[1]=true;
+for(ll i=2;i*i<=N;i++){
+    l[i]=h[i]=i;
+    if(a[i]==false){
+        for(ll j=i*i;j<=N;j+=i){
+            a[j]=true;
+            h[j]=i;
+            if(l[j]==0){l[j]=i;}
         }
     }
-    if(a>1){v.push_back(a);}
-    return v;
 }
+return a;
+}
+auto h_prime=get_h_prime(); */
+
+
+
+/* // sorted prime factors 
+vll prime_factor(ll num){
+ll count=0;
+vll a;a.pb(1);
+while(num){
+    int f=h_prime[num];
+    while(num%f){
+        a.pb(f);
+        count++;
+        num/=f;
+    }
+}
+sort(all(a));
+return a;
+} */
 vector<ll> get_divisors(ll n){
     vll v;
     v.push_back(1);
@@ -69,7 +94,23 @@ vector<ll> get_divisors(ll n){
     sort(all(v));
     return v;
 }
-
+// check_prime_____highest prime divisor____lowest prime divisor
+vector<bool> check_prime(){
+vb a(N+1,false);
+vector<ll> l(N,0),h(N,0);
+a[0]=a[1]=true;
+for(ll i=2;i*i<=N;i++){
+    l[i]=h[i]=i;
+    if(a[i]==false){
+        for(ll j=i*i;j<=N;j+=i){
+            a[j]=true;
+            h[j]=i;
+            if(l[j]==0){l[j]=i;}
+        }
+    }
+}
+return a;
+}
 
 
 
@@ -79,8 +120,10 @@ vector<ll> get_divisors(ll n){
 
 signed main(){
     fastio();
-    ll T;cin >> T;
+    ll T;cin>>T;
     while (T--){
+
+
 
 
 
