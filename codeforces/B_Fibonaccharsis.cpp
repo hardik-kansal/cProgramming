@@ -132,6 +132,8 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
+ ll n,k;cin>>n>>k;
+
  
 
 

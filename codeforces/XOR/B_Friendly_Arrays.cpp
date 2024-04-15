@@ -132,9 +132,15 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll n,m;cin>>n>>m;
+ vll a(n);in(a,n);
+ vll b(m);in(b,m);
 
+ll maxA=b[0];
+for(int j=0;j<m;j++){maxA=b[j] | maxA;}
+ll sum1=a[0] | maxA;
+ll sum2=a[0];
+if(n & 1){for(int i=1;i<n;i++){sum1=sum1^(a[i]|maxA);sum2=sum2^a[i];}cout<<sum2<<' '<<sum1<<endl;}
+else {for(int i=1;i<n;i++){sum1=sum1^(a[i]|maxA);sum2=sum2^a[i];}cout<<sum1<<' '<<sum2<<endl;}
 
-
-
-    }}
+}}

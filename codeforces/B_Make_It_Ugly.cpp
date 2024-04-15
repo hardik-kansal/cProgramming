@@ -132,9 +132,18 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
-
-
+ ll n;cin>>n;
+ vll a(n);in(a,n);
+ vll b;ll ans=LLONG_MAX;b.pb(-1);
+for(int i=1;i<n;i++){
+    if(a[i]!=a[0]){b.pb(i);}
+}
+if(b.size()==1){cout<<-1<<endl;}
+else {
+b.pb(n);
+    for(int i=0;i<b.size()-1;i++){
+ans=min(ans,b[i+1]-b[i]-1);
+    }
+    cout<<ans<<endl;
+}
     }}

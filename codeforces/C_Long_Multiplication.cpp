@@ -132,9 +132,23 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+string s1;cin>>s1;
+string s2;cin>>s2;
+ll j=-1;bool check=false;
+for(int i=0;i<s1.size();i++){
+    if(s1[i]!=s2[i]){
+j=i;
+if(s1[i]>s2[i]){check=true;}
+break;
+    }
+}
+for(int i=j+1;i<s1.size();i++){
+    if(check){if(s1[i]>s2[i])swap(s1[i],s2[i]);}
+    else{
+        if(s2[i]>s1[i])swap(s1[i],s2[i]);
+    }
+}
+cout<<s1<<endl;
+cout<<s2<<endl;
 
-
-
-
-    }}
+}}

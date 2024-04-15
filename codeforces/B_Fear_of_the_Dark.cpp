@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define py cout << "YES" << endl
-#define pn cout << "NO" << endl
+/* #define py cout << "YES" << endl
+ */#define pn cout << "NO" << endl
 #define pneg cout << "-1" << endl
 #define endL cout << endl
 #define MOD 998244353 // >1e8
@@ -23,20 +23,16 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
     cout.tie(NULL)
+class node{
+    public:
+    ll value;int index;
+};
 #define in(arr, n) forw(i, 0, n) cin >> arr[i];
 #define out(arr, n)                      \
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
+typedef vector<node> vnll;
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -49,9 +45,18 @@ typedef map<string,ll> msl;
 typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
 #define N 100005 //1e5+5
-
-void printBinary(int num){
-    for(int i=10;i>=0;i--){
+void inNode(vnll& arr, int n) {
+    for (int i = 0; i < n; i++) {
+        ll x;
+        cin >> x;
+        node a;
+        a.value = x;
+        a.index = i;
+        arr[i] = a;
+    }
+}
+void printBinary(ll num){
+    for(ll i=31;i>=0;i--){
         cout<<((num>>i)&1);
     }
     cout<<endl;
@@ -126,15 +131,23 @@ return a;
 
 
 
-
+ld getDistance(ll a,ll b,ll c,ll d){
+    return sqrt(pow(abs(a-c),2)+pow(abs(b-d),2));
+}
 
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll px,py;cin>>px>>py;
+ ll bx,by;cin>>bx>>by;
+ ll ax,ay;cin>>ax>>ay;
 
-
+ld AB=getDistance(ax,ay,bx,by);
+ld AO=getDistance(ax,ay,0,0);
+ld AP=getDistance(ax,ay,px,py);
+ld BO=getDistance(bx,by,0,0);
+ld BP=getDistance(bx,by,px,py);
 
 
     }}

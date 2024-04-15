@@ -132,8 +132,11 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
+ ll n,m,k;cin>>n>>m>>k;
+ if(k==1)cout<<1<<endl;
+ else if(k==2){if(m>=n)cout<<((n-1)+m/n)<<endl;else cout<<m<<endl;}
+ else if(k==3)cout<<max(0ll,m-n-m/n+1)<<endl;
+ else cout<<0<<endl;
 
 
 

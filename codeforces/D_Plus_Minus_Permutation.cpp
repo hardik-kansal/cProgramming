@@ -132,8 +132,14 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll n,x,y;cin>>n>>x>>y;
 
+ll sum1=0;ll sum2=0;
+ll c=n*__gcd(x,y)/(x*y);
+ll a=n/x-c;ll b=n/y-c;
+sum2=b*(b+1)/2;
+sum1=a*(2*n-a+1)/2;
+cout<<sum1-sum2<<endl;
 
 
 

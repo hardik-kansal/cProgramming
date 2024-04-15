@@ -37,7 +37,7 @@ int main(){
     for(auto &value:prime){cout<<value<<' ';}
 
 // #########################################  SIEVE Algo --N(log(log(N)))
-int N=10e7+5;
+int N=1e7+5;
 bool a[N];
 vector<bool> l(N,0),h(N,0);
 a[0]=a[1]=true;

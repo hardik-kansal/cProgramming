@@ -132,9 +132,16 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
+ ll n;cin>>n;
+ int size=n*(n-1)/2;
+ vll b(size);in(b,size);
+sort(all(b));
+for(int i=0;i<size;i+=--n)
+{
+cout<<b[i]<<' ';
+}
+cout<<b[size-1];
+cout<<endl;
 
 
     }}

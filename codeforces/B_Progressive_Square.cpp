@@ -28,15 +28,6 @@ using namespace std;
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -127,14 +118,26 @@ return a;
 
 
 
-
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
-
+ ll n,c,d;cin>>n>>c>>d;
+ vll a(n*n);for(ll i=0;i<n*n;i++){cin>>a[i];}
+ sort(all(a));
+ ll a11=a[0];
+vll b(n*n);
+ll k=0;
+ for(ll i=0;i<n;i++){
+    for(ll j=0;j<n;j++){
+b[k]=a11-(c+d)+(i+1)*c+(j+1)*d;
+k++;
+    }}
+    bool check=false;
+    sort(all(b));
+    for(ll i=0;i<n*n;i++){
+        if(a[i]!=b[i]){pn;check=true;break;}
+    }
+   if(!check)py;
 
     }}

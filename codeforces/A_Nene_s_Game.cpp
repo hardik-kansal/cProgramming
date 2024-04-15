@@ -132,7 +132,18 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll k,q;cin>>k>>q;
+ vll a(k);vll b(q);in(a,k);in(b,q);
+
+ sort(all(a));
+ for(int i=0;i<b.size();i++){
+
+ if(a[0]>b[i])cout<<b[i]<<' ';
+ else cout<<a[0]-1<<' ';
+ }
+ cout<<endl;
+
+
 
 
 

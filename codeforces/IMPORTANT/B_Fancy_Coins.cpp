@@ -121,7 +121,25 @@ for(ll i=2;i*i<=N;i++){
 return a;
 }
 
-
+/* 
+bool check=true;
+ll count=0;
+ ll sum=a1+ak*k;
+if(sum<=m){
+    sum=m-sum;
+count+=sum/k;
+if(sum%k!=0){
+    if(k-sum%k<=a1){count++;}
+    else count+=sum%k;
+}}
+else if(sum>m){
+    if((m>ak*k && m-ak*k>a1) || (m-(m/k)*k >a1)){check=false;}
+    if(!check && m/k>ak){count+=m/k-ak;}
+    if(!check && m%k!=0){
+        if(m%k>a1){count+=m%k-a1;}
+    }
+    }
+cout<<count<<endl; */
 
 
 
@@ -132,9 +150,10 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
-
-
-    }}
+ll m,k,a1,ak;cin>>m>>k>>a1>>ak;
+ll temp=min(ak*k,(m/k)*k);
+ll sum=max(0ll,m-temp-a1);
+ll ans=sum/k+sum%k;
+if(k-sum%k<=a1){ans=min(sum/k+1,ans);}
+cout<<ans<<endl;
+}}

@@ -23,20 +23,16 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
     cout.tie(NULL)
+class node{
+    public:
+    ll value;int index;
+};
 #define in(arr, n) forw(i, 0, n) cin >> arr[i];
 #define out(arr, n)                      \
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
+typedef vector<node> vnll;
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -49,7 +45,16 @@ typedef map<string,ll> msl;
 typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
 #define N 100005 //1e5+5
-
+void inNode(vnll& arr, int n) {
+    for (int i = 0; i < n; i++) {
+        ll x;
+        cin >> x;
+        node a;
+        a.value = x;
+        a.index = i;
+        arr[i] = a;
+    }
+}
 void printBinary(int num){
     for(int i=10;i>=0;i--){
         cout<<((num>>i)&1);
@@ -132,7 +137,12 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll n;cin>>n;string s;cin>>s;
+
+ vll a(26);for(int i=0;i<n;i++){a[int(s[i])-'a']++;}
+ ll maxn=*max_element(all(a));
+ cout<<max(n%2,2*maxn-n)<<endl;
+
 
 
 

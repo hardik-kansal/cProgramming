@@ -132,9 +132,16 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ll n;cin>>n;ll max1=LLONG_MIN;
+for(int j=0;j<=n;j++){
+ll sum=0;ll max2=LLONG_MIN;
+for(int i=1;i<=n;i++){
+if(i<=j)sum+=i*i;
+else {sum+=i*(n-i+1+j);max2=max(max2,i*(n-i+1+j));}
+}
+max1=max(max1,sum-max2);
+}
 
-
-
+cout<<max1<<endl;
 
     }}

@@ -28,15 +28,6 @@ using namespace std;
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -127,14 +118,27 @@ return a;
 
 
 
-
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll n,k;cin>>n>>k;
+vector<ll> a(n);for(int i=0;i<n;i++){cin>>a[i];}
+bool check=false;
+for(int i=0;i<k-1;i++){
+if(a[i]>a[k-1]){swap(a[i],a[k-1]);check=true;k=i+1;break;};
 
-
+}
+int st=0;ll count=0;
+if(check){st=k-1;}
+for(int i=st;i<n;i++){
+    if(a[i]>a[k-1])break;
+    else if(a[i]!=a[k-1])count++;
+}
+ll d=0;
+if(k-1==0){d=count;}else{d=count+1;}
+if(!check)cout<<count<<endl;
+else cout<<max(k-2,d)<<endl;
 
 
     }}

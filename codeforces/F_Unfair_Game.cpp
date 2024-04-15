@@ -132,9 +132,8 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
-
-
+ll a,b,c,d;cin>>a>>b>>c>>d;
+if(a==1 && b==1 && c==1)cout<<d/2+1<<endl;
+else if(a%2==1 && b%2==1 && c%2==1){cout<<a/2+b/2+c/2+d/2+1<<endl;}
+else cout<<a/2+b/2+c/2+d/2<<endl;
     }}

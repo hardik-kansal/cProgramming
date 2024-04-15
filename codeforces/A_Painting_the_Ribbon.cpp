@@ -132,9 +132,14 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
-
-
-
-
-    }}
+ ll n,m,k;cin>>n>>m>>k;
+if(n<=m && m-1>k)py;
+else if(n%m>=2){
+if ((n/m)*(m-1)+n%m-1>k)py;
+else pn;
+}
+else if(n%m<2){
+if ((n/m)*(m-1)>k)py;
+else pn;
+}
+  }}

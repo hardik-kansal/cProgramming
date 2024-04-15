@@ -23,20 +23,16 @@ using namespace std;
     ios_base::sync_with_stdio(false); \
     cin.tie(NULL);                    \
     cout.tie(NULL)
+class node{
+    public:
+    ll value;int index;
+};
 #define in(arr, n) forw(i, 0, n) cin >> arr[i];
 #define out(arr, n)                      \
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
+typedef vector<node> vnll;
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -49,7 +45,16 @@ typedef map<string,ll> msl;
 typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
 #define N 100005 //1e5+5
-
+void inNode(vnll& arr, int n) {
+    for (int i = 0; i < n; i++) {
+        ll x;
+        cin >> x;
+        node a;
+        a.value = x;
+        a.index = i;
+        arr[i] = a;
+    }
+}
 void printBinary(int num){
     for(int i=10;i>=0;i--){
         cout<<((num>>i)&1);
@@ -125,14 +130,31 @@ return a;
 
 
 
-
-
+bool cmp(node a, node b){
+    return a.value>b.value;
+}
 
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ll n;cin>>n;vnll a(n);vnll b(n);vnll c(n);inNode(a,n);inNode(b,n);inNode(c,n);
+set<ll> set1;
+sort(all(a),cmp);
+sort(all(b),cmp);
+sort(all(c),cmp);
+for(int i=0;i<3;i++){
+for(int j=0;j<3;j++){
+for(int k=0;k<3;k++){
+if(b[j].index==a[i].index || b[j].index==c[k].index || a[i].index==c[k].index)continue;
+else set1.insert(a[i].value+b[j].value+c[k].value);
+}
+}
+}
+cout<<*set1.rbegin()<<endl;
+
+
+
 
 
 

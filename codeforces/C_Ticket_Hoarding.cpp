@@ -28,15 +28,6 @@ using namespace std;
     forw(i, 0, n) cout << arr[i] << " "; \
     cout << endl;
 
-/* 
- vll b(n+1,0);
- vll c(n+1,0);
- vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
-for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
-reverse(all(a));
-for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
- */
-
 typedef vector<ll> vll;
 typedef vector<ld> vld;
 typedef vector<double> vd;
@@ -123,18 +114,40 @@ return a;
 
 
 
+ class node{
+    public:
+    ll value;
+    ll index;
+ };
 
 
-
-
-
+bool compareByValue(const node& a, const node& b) {
+    return a.value < b.value; // Sort in ascending order based on value
+}
+bool compareByIndex(const node& a, const node& b) {
+    return a.index < b.index; // Sort in ascending order based on index
+}
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
  
+ ll n,m,k;cin>>n>>m>>k;
 
+ vector<node> a(n);for(int i=0;i<n;i++){node b;cin>>b.value;b.index=i;a[i]=b;}
 
+ 
+ sort(all(a),compareByValue);
+ ll days=(k-1)/m+1;
+ ll index=a[days-1].index;
+ ll value=a[days-1].value;
+sort(a.begin(), a.begin() + days, compareByIndex);
+ll sum=0;ll sold=0;
+for(int i=0;i<days;i++){
+    if(a[i].index==index && k%m!=0){sum+=(a[i].value+sold)*(k%m);sold+=k%m;}
+    else {sum+=(a[i].value+sold)*m;    sold+=m;}
 
+}
+cout<<sum<<endl;
 
     }}

@@ -132,7 +132,16 @@ signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
- 
+ ll n;cin>>n;vector<int> a(n+1,0);
+ for(int i=0;i<n;i++){
+    int x;cin>>x;a[x]++;
+}ll count=0;
+for(int i=0;i<=n;i++){
+if(a[i]==2)count++;
+}
+cout<<count<<endl;
+
+
 
 
 

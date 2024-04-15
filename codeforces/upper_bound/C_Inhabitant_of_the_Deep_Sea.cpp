@@ -127,12 +127,30 @@ return a;
 
 
 
-
 signed main(){
     fastio();
     ll T;cin>>T;
     while (T--){
+ ll n,k;cin>>n>>k;
+ vll b(n+1,0);
+ vll c(n+1,0);
+ vll a(n,0);for(int i=0;i<n;i++){cin>>a[i];}
+for(int i=0;i<n;i++){b[i+1]=b[i]+a[i];}
+reverse(all(a));
+for(int i=0;i<n;i++){c[i+1]=c[i]+a[i];}
+/* out(b,n+1);
+out(c,n+1); */
+if(b[n]<=k){
+    cout<<n<<endl;continue;
+}
+ll front=upper_bound(all(b),(k+1)/2)-b.begin()-1;
+ll back=upper_bound(all(c),(k/2))-c.begin()-1;
+/* cout<<front<<' '<<back<<endl;
+ */cout<<min(n,front+back)<<endl;
+
+
  
+
 
 
 
