@@ -2,7 +2,7 @@
 using namespace std;
 #define py cout << "YES" << endl
 #define pn cout << "NO" << endl
-#define pneg cout << "-1" << endl
+#define pneg cout << "-" << endl
 #define endL cout << endl
 #define MOD 998244353 // >1e8
 #define INF 1e18
