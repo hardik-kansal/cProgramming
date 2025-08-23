@@ -42,15 +42,14 @@ typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
 
 
-
-void printBinary(ll num){
+/*
+void printBinary(int num){
     for(int i=31;i>=0;i--){
         cout<<((num>>i)&1);
     }
     cout<<endl;
 }
 
-/*
 ll gcd(ll a, ll b) {
     while (b != 0) {
         ll temp = b;
@@ -63,10 +62,9 @@ ll lcm(ll a,ll b){
     if(a==0 || b==0)return 0;
     return abs(a/gcd(a,b)*b);
 }
-*/
 
 
-/*
+
 ll binExpo(ll a,ll b,ll M=LLONG_MAX){
     ll ans=1;
     a=a%M;
@@ -95,61 +93,44 @@ ll binExpoLarge(ll a,ll b,ll c,ll M){
 
 */
 
+/* 
 
-
-/*
-
-// n(log(log)) 
-
-vll get_prime(){
-const int N=1e6;
-vb isPrime(N+1,true);
-vll l(N+1,0),h(N+1,0);
-for(ll i=2;i<=N;i++){
-    if(isPrime[i]==true){
-        l[i]=h[i]=i;
+vll get_h_prime(){
+vb a(N+1,false);
+vll l(N,0),h(N,0);
+a[0]=a[1]=true;
+for(ll i=2;i*i<=N;i++){
+    l[i]=h[i]=i;
+    if(a[i]==false){
         for(ll j=2*i;j<=N;j+=i){
-            a[j]=false;
+            a[j]=true;
             h[j]=i;
             if(l[j]==0){l[j]=i;}
         }
     }
 }
-// lowest_prime, is_prime
-return h;
-
+return a;
 }
+auto h_prime=get_h_prime(); 
 
 
-auto h_prime =get_prime();
-
-
-// log^2
-// 3*3*3*2*2*2
-// count = 6
-// count_divisors = (3+1)*(4+1);
 vll prime_factors(ll num){
 ll count=0;
-ll count_divisors=0;
 vll factors;
 while(num>1){
     int f=h_prime[num];
-    ll c=0;
     while(num%f==0){
         factors.pb(f);
         num/=f;
-        count++;
-        c++;
     }
-    count_divisors*=(c+1);
 }
 return factors;
 } 
 
+*/
 
 
-// root(n)
-// 1, n and rest divisors
+/*
 
 vll get_divisors(ll n){
     vll v;
@@ -161,7 +142,9 @@ vll get_divisors(ll n){
     }
     return v;
 }
+
 */
+
 
 
 
@@ -176,9 +159,22 @@ int main(){
     ll T;cin>>T;
     while (T--){
 
-
-
-
+long long n;cin>>n;
+long long p=1e18;
+vll ans;
+for(int i=18;i>0;i--){
+    if(n%(1+p)==0)ans.push_back(n/(1+p));
+    p/=10;
+}
+cout<<ans.size()<<endl;
+if(ans.size()!=0)
+{
+    for(int i=0;i<ans.size();i++){
+        cout<<ans[i]<<' ';
+    }
+    cout<<endl;
+    
+}
 
 
 

@@ -97,40 +97,38 @@ ll binExpoLarge(ll a,ll b,ll c,ll M){
 
 
 
-/*
 
-// n(log(log)) 
-
-vll get_prime(){
+vb get_prime(){
 const int N=1e6;
 vb isPrime(N+1,true);
 vll l(N+1,0),h(N+1,0);
 for(ll i=2;i<=N;i++){
-    if(isPrime[i]==true){
+    if(isPrime[i]==1){
         l[i]=h[i]=i;
         for(ll j=2*i;j<=N;j+=i){
-            a[j]=false;
+            isPrime[j]=0;
             h[j]=i;
             if(l[j]==0){l[j]=i;}
         }
     }
+
 }
 // lowest_prime, is_prime
-return h;
+return isPrime;
 
 }
 
 
-auto h_prime =get_prime();
+auto a_prime =get_prime();
 
-
+/*
 // log^2
 // 3*3*3*2*2*2
 // count = 6
 // count_divisors = (3+1)*(4+1);
-vll prime_factors(ll num){
+ll prime_factors(ll num){
 ll count=0;
-ll count_divisors=0;
+ll count_divisors=1;
 vll factors;
 while(num>1){
     int f=h_prime[num];
@@ -143,7 +141,9 @@ while(num>1){
     }
     count_divisors*=(c+1);
 }
-return factors;
+
+return count_divisors;
+
 } 
 
 
@@ -165,25 +165,16 @@ vll get_divisors(ll n){
 
 
 
-
-
-
-
-
-
 int main(){
     fastio();
-    ll T;cin>>T;
-    while (T--){
+int n;cin>>n;
+vll a(n);in(a,n);
+forw(i,0,n){
+    if(a[i]==1){pn;continue;}
+    ll y=sqrt(a[i]);
+    if(y*y==a[i] && a_prime[y])py;
+    else pn;
+}
 
-
-
-
-
-
-
-
-
-        
-    }}
+}
 
