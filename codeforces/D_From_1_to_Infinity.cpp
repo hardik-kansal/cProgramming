@@ -154,26 +154,47 @@ vll get_divisors(ll n){
 
 
 
-int main(){
-    fastio();
-    ll T;cin>>T;
-    while (T--){
-
-ll k;cin>>k;
-ll ans=0;
-for(int i=1;check<k;i++){
-
-   
+long long dp[18][2],way[18][2];
+long long solve(long long N)
+{
+	string n=to_string(N);
+	assert(n.size()<17);
+	for(int i=0;i<18;i++)dp[i][0]=dp[i][1]=way[i][0]=way[i][1]=0;
+	way[0][0]=1;
+	for(int i=0;i<n.size();i++)for(int j=0;j<2;j++)
+	{
+		int a=j?9:n[i]-'0';
+		for(int d=0;d<=a;d++)
+		{
+			int nj=j|d<a;
+			dp[i+1][nj]+=dp[i][j]+way[i][j]*d;
+			way[i+1][nj]+=way[i][j];
+		}
+	}
+	return dp[n.size()][1];
 }
-
-
-
-
-
-
-
-
-
-        
-    }}
-
+int main()
+{
+	ios::sync_with_stdio(false);
+	cin.tie(nullptr);
+	int T;cin>>T;
+	for(;T--;)
+	{
+		long long K;cin>>K;
+		int keta=1;
+		long long p10=1;
+		while(K>=keta*(p10*10-p10))
+		{
+			K-=keta*(p10*10-p10);
+			keta++;
+			p10*=10;
+		}
+		long long ans=solve(p10+K/keta);
+		{
+			string v=to_string(p10+K/keta);
+			int c=K%keta;
+			for(int i=0;i<c;i++)ans+=v[i]-'0';
+		}
+		cout<<ans<<"\n";
+	}
+}

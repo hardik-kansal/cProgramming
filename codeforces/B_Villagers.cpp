@@ -42,14 +42,15 @@ typedef priority_queue<ll> mxpq;
 typedef priority_queue<ll, vll, greater<ll>> mnpq;
 
 
-/*
-void printBinary(int num){
+
+void printBinary(ll num){
     for(int i=31;i>=0;i--){
         cout<<((num>>i)&1);
     }
     cout<<endl;
 }
 
+/*
 ll gcd(ll a, ll b) {
     while (b != 0) {
         ll temp = b;
@@ -62,9 +63,10 @@ ll lcm(ll a,ll b){
     if(a==0 || b==0)return 0;
     return abs(a/gcd(a,b)*b);
 }
+*/
 
 
-
+/*
 ll binExpo(ll a,ll b,ll M=LLONG_MAX){
     ll ans=1;
     a=a%M;
@@ -93,44 +95,62 @@ ll binExpoLarge(ll a,ll b,ll c,ll M){
 
 */
 
-/* 
 
-vll get_h_prime(){
-vb a(N+1,false);
-vll l(N,0),h(N,0);
-a[0]=a[1]=true;
-for(ll i=2;i*i<=N;i++){
-    l[i]=h[i]=i;
-    if(a[i]==false){
+
+/*
+
+// n(log(log)) 
+
+vll get_prime(){
+const int N=1e6;
+vb isPrime(N+1,true);
+isPrime[0]=isPrime[1]=false;
+vll l(N+1,0),h(N+1,0);
+for(ll i=2;i<=N;i++){
+    if(isPrime[i]==true){
+        l[i]=h[i]=i;
         for(ll j=2*i;j<=N;j+=i){
-            a[j]=true;
+            a[j]=false;
             h[j]=i;
             if(l[j]==0){l[j]=i;}
         }
     }
 }
-return a;
+// lowest_prime, is_prime
+return h;
+
 }
-auto h_prime=get_h_prime(); 
 
 
+auto h_prime =get_prime();
+
+
+// log^2
+// 3*3*3*2*2*2
+// count = 6
+// count_divisors = (3+1)*(4+1);
 vll prime_factors(ll num){
 ll count=0;
+ll count_divisors=0;
 vll factors;
 while(num>1){
     int f=h_prime[num];
+    ll c=0;
     while(num%f==0){
         factors.pb(f);
         num/=f;
+        count++;
+        c++;
     }
+    count_divisors*=(c+1);
 }
 return factors;
 } 
 
-*/
 
 
-/*
+// root(n)
+// 1, n and rest divisors
 
 vll get_divisors(ll n){
     vll v;
@@ -142,52 +162,37 @@ vll get_divisors(ll n){
     }
     return v;
 }
-
 */
 
 
 
-/*
-ll binMultiply(ll a ,ll b,ll M){
-    if(a==0 || b==0)return 0;
-    ll ans=0;
-    while(b){
-        if(b&1)ans=(ans+a)%M;
-        a=(a+a)%M;
-        b>>=1;
-    }
-    return ans;
-}
 
-ll binExpo(ll a,ll b,ll M=LLONG_MAX){
-    ll ans=1;
-    a=a%M;
-    while(b){
-        if(b&1)ans=binMultiply(ans,a,M);
-        a=binMultiply(a,a,M);
-        b>>=1;
-    }
-    return ans;
-}
-*/
+
+
+
 
 
 int main(){
     fastio();
     ll T;cin>>T;
     while (T--){
-        int n;cin >> n;
+
+int n;cin>>n;
+vll a(n);in(a,n);ll ans=0;
+sort(a.begin(),a.end());
+if(n&1){
+    for(int i=n-1;i>=1;i-=2){
+        ans+=a[i];
+    }
+    ans+=a[0];
+}
+else{
+    for(int i=1;i<n;i+=2){
+        ans+=a[i];
+    }
+}
+cout<<ans<<endl;
+
         
-        int x = 0;
-        ll p = 1;
-        ll ans = 0;
-        while (n) {
-            ans += (n % 3) * (p * 3 + x * p / 3);
-            p *= 3;
-            n /= 3;
-            x++;
-        }
-        cout << ans << endl;
-      
     }}
 
