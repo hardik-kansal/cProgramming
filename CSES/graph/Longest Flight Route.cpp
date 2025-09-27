@@ -22,7 +22,9 @@ int main() {
 
     level[1] = 1;
     parent.assign(n+1,0);
-    for(int i=0;i<=n;i++)parent[i]=i;
+    parent[1]=1;
+    parent[n]=n;
+
     queue<int> q;
     
     for(int i=1; i<=n; i++) {
@@ -48,14 +50,11 @@ int main() {
             ans.push_back(last);
             last=parent[last];
         }
-        if(last==1){
         cout<<level[n]<<endl;
         ans.push_back(last);
         reverse(ans.begin(),ans.end());
         for(auto &val:ans)cout<<val<<' ';
         cout<<endl;
-        }
-        else cout<<"IMPOSSIBLE"<<endl;
 
     }
     
